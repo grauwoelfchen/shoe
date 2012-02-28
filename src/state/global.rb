@@ -2,7 +2,8 @@
 # encoding: utf-8
 
 require 'htmlgrid/urllink'
-require 'state/home/init'
+require 'state/greet/hello'
+require 'state/greet/goodbye'
 require 'sbsm/state'
 
 module SHOE
@@ -10,14 +11,11 @@ module SHOE
     class Global < SBSM::State
       DIRECT_EVENT = nil 
       GLOBAL_MAP = {
-        :home  => State::Home::Init,
-        :hallo => State::Home::Init
+        :hello   => State::Greet::Hello,
+        :goodbye => State::Greet::Goodbye
       }	
-      HOME_STATE = State::Home::Init
-      VIEW = View::Home::Init
-			def home_state
-				self::class::HOME_STATE
-			end
+      HOME_STATE = State::Greet::Hello
+      VIEW       = View::Greet::Hello
     end
 	end
 end

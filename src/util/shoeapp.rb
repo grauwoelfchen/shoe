@@ -5,10 +5,13 @@ require 'sbsm/drbserver'
 require 'sbsm/index'
 require 'util/shoeconfig'
 require 'util/session'
+require 'util/validator'
 require 'fileutils'
 
 module SHOE
 	class App < SBSM::DRbServer
+		SESSION   = Session
+    VALIDATOR = Validator
 		def initialize opts={}
       start = Time.now
 			puts "init system"
