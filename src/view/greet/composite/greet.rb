@@ -6,14 +6,20 @@ module SHOE
 		module Greet
       class GreetComposite < HtmlGrid::Composite
         COMPONENTS = {
-          [0,0]	=> :greet
+          [0,0]	=> :context,
+          [0,1]	=> :greet,
         }
         CSS_MAP = {
-          [0,0]	=> 'list center'
+          [0,0]	=> 'center',
+          [0,1]	=> 'center',
         }
-        COMPONENT_CSS_MAP = {}
-			  def greet(model, session=@session)
-				  span = super(model)
+        COMPONENT_CSS_MAP = {
+        }
+        def context(model, session)
+          "Hey"
+        end
+			  def greet(model, session)
+          "world!"
 			  end
       end
 		end

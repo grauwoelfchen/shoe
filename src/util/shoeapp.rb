@@ -6,6 +6,7 @@ require 'sbsm/index'
 require 'util/shoeconfig'
 require 'util/session'
 require 'util/validator'
+require 'custom/lookandfeelbase'
 require 'fileutils'
 
 module SHOE

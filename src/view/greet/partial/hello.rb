@@ -16,9 +16,6 @@ module SHOE
 				[0,0]	=>	'',
 			}
 			CSS_CLASS = 'composite'
-			def greet(model, session=@session)
-				span = super(model)
-			end
 		end
 	end
 end

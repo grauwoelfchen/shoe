@@ -3,18 +3,12 @@
 
 require 'htmlgrid/template'
 require 'sbsm/time'
+require 'view/composite/head'
+require 'view/composite/foot'
 
 module SHOE
   module View
     class PublicTemplate < HtmlGrid::Template
-      CONTENT    = nil
-      CSS_CLASS  = "composite"
-      COMPONENTS = {
-        [0,0] => :head,
-        [0,1] => :content,
-        [0,2] => :foot,
-      }
-      HEAD = ''
       HTTP_HEADERS = {
         "Content-Type"  => "text/html; charset=UTF-8",
         "Cache-Control" => "private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
@@ -22,7 +16,15 @@ module SHOE
         "Expires"       => Time.now.rfc1123,
         "P3P"           => "CP='OTI NID CUR OUR STP ONL UNI PRE'",
       }
-      FOOT = ''
+      HEAD       = View::HeadComposite
+      FOOT       = View::FootComposite
+      CONTENT    = nil
+      CSS_CLASS  = "composite"
+      COMPONENTS = {
+        [0,0] => :head,
+        [0,1] => :content,
+        [0,2] => :foot,
+      }
       META_TAGS = [
         {
           "name"    => "robots",
@@ -30,13 +32,13 @@ module SHOE
         },
       ]
       def head(model, session)
-        ""
+        self::class::HEAD.new(model, session, self) unless self::class::HEAD.nil?
       end
       def content(model, session)
         self::class::CONTENT.new(model, session, self)
       end
       def foot(model, session)
-        "shoe"
+        self::class::FOOT.new(model, session, self) unless self::class::FOOT.nil?
       end
     end
   end

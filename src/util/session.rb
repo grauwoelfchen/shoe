@@ -4,19 +4,18 @@
 require 'sbsm/session'
 require 'state/states'
 require 'util/validator'
+require 'custom/lookandfeelfactory'
 require 'fileutils'
 
 module SHOE
   class Session < SBSM::Session
-		DEFAULT_FLAVOR         = "gcc"
+		LF_FACTORY             = LookandfeelFactory
+		DEFAULT_FLAVOR         = "gray"
 		DEFAULT_LANGUAGE       = "de"
 		DEFAULT_STATE          = State::Greet::Hello
-		DEFAULT_ZONE           = :greet
 		EXPIRES                = 30 * 60
 		SERVER_NAME            = 'shoe.localhost'
 		PERSISTENT_COOKIE_NAME = 'shoe'
-		QUERY_LIMIT            = 5
-		QUERY_LIMIT_AGE        = 60 * 60 * 24
 		@@requests ||= {}
     def process(request)
       @request_path = request.unparsed_uri
