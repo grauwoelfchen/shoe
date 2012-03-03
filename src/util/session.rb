@@ -3,6 +3,7 @@
 
 require 'sbsm/session'
 require 'state/states'
+require 'util/validator'
 require 'fileutils'
 
 module SHOE

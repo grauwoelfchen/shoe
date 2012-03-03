@@ -7,9 +7,9 @@ $: << File.expand_path("..", File.dirname(__FILE__))
 require 'drb/drb'
 require 'util/shoeapp'
 
-$l_htmlgrid = SHOE::App.new
+$shoe = SHOE::App.new
 
 $0 = "Shoe (ShoeApp)"
 
-DRb.start_service(SHOE::SERVER_URI, $l_htmlgrid)
+DRb.start_service(SHOE::SERVER_URI, $shoe)
 DRb.thread.join

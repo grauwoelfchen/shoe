@@ -9,7 +9,7 @@ module SHOE
 	MAIL_FROM    = '"Yasuhiro Asaka" <yasaka@ywesee.com>'
 	MAIL_TO      = ['yasaka@ywesee.com']
 	SMTP_FROM    = 'yasaka@ywesee.com'
-	SERVER_URI   = "druby://localhost:20000"
+	SERVER_URI   = "druby://localhost:22222"
 	PROJECT_ROOT = File.expand_path('../..', File.dirname(__FILE__))
 	ENCODING     = 'UTF-8'
 end

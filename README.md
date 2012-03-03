@@ -1,4 +1,4 @@
-# shoe
+# Shoe
 
 This is a sample mock project.
 
@@ -9,9 +9,9 @@ This is a sample mock project.
 
 -----
 
-## setup
+## Setup
 
-sample apache.conf (see shoe.conf)
+sample httpd.conf (see shoe.conf)
 
 ```
 <VirtualHost *:80>
@@ -26,3 +26,13 @@ sample apache.conf (see shoe.conf)
   SetEnv DEFAULT_FLAVOR gcc 
 </VirtualHost>
 ```
+
+## Note
+
+Before you run bin/shoed, please check druby port.  
+If you use same port in multi process, unexpected error (Internal Server Error of Apache) caused.
+
+See following files
+
+* doc/index.rbx
+* src/util/shoeapp.rb
