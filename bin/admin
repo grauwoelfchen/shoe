@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+$0 = "shoe (Admin-Tool)"
+$: << File.expand_path('../src', File.dirname(__FILE__))
+
+require 'rubygems'
+require 'drb'
+require 'util/shoeconfig'
+require 'readline'
+include Readline
+
+class RequestStub
+	def ask(meth, *args)
+		pr = "call: #{meth}(#{args.join(',')}) return? > "
+		readline(pr, true)
+	end
+	def cookies
+		instance_eval(ask(:cookies)) || {}
+	end
+	def params
+		instance_eval(ask(:params)) || {}
+	end
+	def unparsed_uri
+		ask(:unparsed_uri)
+	end
+	def user_agent
+		ask(:user_agent)
+	end
+end
+
+Kernel.trap('INT') {
+	if($current.respond_to?(:exit))
+		$current.exit
+		$current = nil
+	else
+		puts "<ctrl-c> is used to kill admin-threads."
+		puts "Type <quit> or <exit> to exit."
+	end
+}
+
+prompt = 'shoe;) '
+req = RequestStub.new
+request = DRb.start_service('druby://localhost:0', req)
+oddb = DRbObject.new(nil, SHOE::SERVER_URI)
+last_error = nil
+priority = 0
+while(line = readline(prompt, true))
+	result = ''
+	result.extend(DRb::DRbUndumped)
+	line.strip!
+	$stdout.print "-> "
+	case line.downcase
+	when 'exit', 'quit'
+		$stdout.puts 'Tschüs'
+		break
+	when 'bt', 'backtrace'
+		if last_error.respond_to?(:backtrace)
+			$stdout.puts last_error.backtrace 
+		else
+			$stdout.puts 'No Error'
+    end
+	else
+		begin
+			bgflag = line.slice!(/\s*\&\s*$/)
+			$current = oddb._admin(line, result, priority)
+			unless(bgflag)
+				$current.join
+			end
+			$stdout.puts result
+		rescue StandardError, SyntaxError => last_error
+			$stdout.puts last_error
+		end
+  end
+	$current = nil
+	$stdout.flush
+end

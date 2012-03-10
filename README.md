@@ -7,9 +7,16 @@ This is a sample mock project.
 * [o] odba
 * [e] example
 
+Let's learn world of oddb.org.
+
 -----
 
 ## Setup
+
+### Server - Apache
+
+* Apach2
+* mod\_ruby
 
 sample httpd.conf (see shoe.conf)
 
@@ -26,6 +33,57 @@ sample httpd.conf (see shoe.conf)
   SetEnv DEFAULT_FLAVOR gcc 
 </VirtualHost>
 ```
+
+### DB - PostgreSQL
+
+sample db setup (see shoe.sql)
+
+```
+$ sudo -u postgres createdb -E UTF8 -T template0 shoe
+$ sudo -u postgres createuser shoe
+$ sudo -u postgres psql -f shoe.sql shoe
+```
+
+-----
+
+## Admin Tool
+
+$ bin/admin
+
+```
+shoe;) articles
+-> {}
+shoe;) create_article
+-> #<SHOE::Article:0x8a54cb0>
+shoe;) articles
+-> {1=>#<SHOE::Article:0x8a54cb0 @revision=2012-03-10 18:43:58 +0100, @odba_id=1, @id=1>} 
+shoe;) articles.odba_store
+-> Hash
+shoe;) articles.values.first
+-> #<SHOE::Article:0x8a54cb0>
+shoe;) exit
+-> Tschüs
+```
+
+\# reboot shoed  
+$ bin/admin 
+
+```
+shoe;) articles
+-> Hash
+shoe;) articles.keys
+-> [1]
+shoe;) articles.values
+-> {1=>#<ODBA::Stub:82508740#1 @odba_class=SHOE::Article @odba_container=82494650#1>}
+shoe;) articles.values.first
+-> #<SHOE::Article:0x8a54cb0>
+shoe;) articles.values.first.is_a? ODBA::Stub
+-> true
+shoe;) exit
+-> Tschüs
+```
+
+-----
 
 ## Note
 

@@ -1,14 +1,17 @@
 #!/usr/bin/env ruby
-# Shoe Server
+# encoding: utf-8
 
 $: << File.expand_path("../src", File.dirname(__FILE__))
 $: << File.expand_path("..", File.dirname(__FILE__))
 
 require 'drb/drb'
 require 'util/shoeapp'
+require 'etc/db_connection'
+
+ODBA.cache.setup
+ODBA.cache.clean_prefetched
 
 $shoe = SHOE::App.new
-
 $0 = "Shoe (ShoeApp)"
 
 DRb.start_service(SHOE::SERVER_URI, $shoe)
