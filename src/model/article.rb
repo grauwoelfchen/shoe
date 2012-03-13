@@ -6,7 +6,11 @@ require 'util/persistence'
 module SHOE
 	class Article
 		include Persistence
-		attr_accessor :slug, :title, :descriptiono,
+		attr_accessor \
+      :slug, :title, :description,
       :created_at, :updated_at
+    def initialize
+      @created_at = @updated_at = Time.now
+    end
 	end
 end

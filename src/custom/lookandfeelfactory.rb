@@ -9,9 +9,12 @@ module SHOE
 	class LookandfeelFactory < SBSM::LookandfeelFactory
 		BASE = LookandfeelBase
 		WRAPPERS = {
-      'gray' => [
-        LookandfeelGray,
-      ]
+      'plain' => [
+        LookandfeelPlain,
+      ],
+      'grid' => [
+        LookandfeelGrid,
+      ],
 		}
 	end
 end

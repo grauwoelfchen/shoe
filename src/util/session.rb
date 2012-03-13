@@ -10,9 +10,9 @@ require 'fileutils'
 module SHOE
   class Session < SBSM::Session
 		LF_FACTORY             = LookandfeelFactory
-		DEFAULT_FLAVOR         = "gray"
-		DEFAULT_LANGUAGE       = "de"
-		DEFAULT_STATE          = State::Greet::Hello
+		DEFAULT_FLAVOR         = 'plain'
+		DEFAULT_LANGUAGE       = 'de'
+		DEFAULT_STATE          = State::Slips::Index
 		EXPIRES                = 30 * 60
 		SERVER_NAME            = 'shoe.localhost'
 		PERSISTENT_COOKIE_NAME = 'shoe'
@@ -23,5 +23,16 @@ module SHOE
       super
       '' ## return empty string across the drb-border
     end 
+		def event
+			if(@lookandfeel \
+				&& persistent_user_input(:flavor) != @lookandfeel.flavor)
+				:home
+			else
+				super || :home
+			end
+		end
+		def flavor 
+			@flavor ||= (@valid_input[:partner] || super)
+		end
   end
 end

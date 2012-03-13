@@ -1,0 +1,78 @@
+/* main */
+body {
+  font-family      : Arial, Helvetica, sans-serif;
+  font-size        : 14px; 
+  border           : 0px;
+  background-color : gray;
+}
+h3 {
+  font-family : Arial, Helvetica, sans-serif;
+  font-size   : 20px;
+  text-align  : center;
+}
+label {
+  font-weight : bold;
+}
+ul {
+  margin          : 0px;
+  padding-left    : 14px;
+  list-style-type : disc;
+}
+ol {
+  margin  : 0px;
+  padding : 0px 0px 0px 20px;
+}
+ol li {
+  margin : 5px 0px;
+}
+table, th, td {
+  border:  1px solid black;
+  padding: 2px;
+  margin:  0;
+}
+th {
+  background-color: silver;
+}
+
+/* error */
+body.appdown h1 {
+  font-family : Arial, Helvetica, sans-serif;
+  font-size   :  12px; 
+  color       : white;
+  background  : #2ba476;
+}
+body.appdown h1, body.appdown p {
+  padding : 4px;
+}
+p {
+  padding : 0px;
+}
+pre {
+  font-style  : normal;
+  font-family : Courier New, Courier, monospace;
+  font-size   : 12px;
+  margin-top  : 0px;
+  text-align  : left;
+  white-space : pre;
+}
+a {
+  text-decoration : none;
+}  
+a img {
+  border : 0px;
+}
+
+/* content */
+table.composite {
+  background-color : white;
+  width            : 100%;
+}
+td.welcome {
+  text-align : right;
+}
+td.center {
+  text-align : center;
+}
+td.right {
+  text-align : right;
+}

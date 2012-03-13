@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 
 require 'view/publictemplate'
-require 'view/greet/composite/greet'
+require 'view/slips/composite/index'
 
 module SHOE
   module View
-    module Greet
-      class Hello < View::PublicTemplate
+    module Slips
+      class Index < View::PublicTemplate
         CSS_CLASS = 'composite'
-        CONTENT   = View::Greet::GreetComposite
+        CONTENT   = View::Slips::IndexComposite
       end
     end 
   end 

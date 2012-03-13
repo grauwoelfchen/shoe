@@ -5,12 +5,18 @@ require 'htmlgrid/link'
 
 module SHOE
 	module View
-		class NavigationLink < HtmlGrid::Link
-			CSS_CLASS = "navigation"
+    class NavigationLink < HtmlGrid::Link
+			CSS_CLASS = 'navigation'
 			def init
 				super
-				unless(@lookandfeel.direct_event == @name)
-					@attributes.store("href", @lookandfeel._event_url(@name))
+				flavor = @session.flavor
+				unless(flavor == @name.to_s)
+					path = @session.request_path.dup
+					path.slice!(/\/$/u)
+          base = "/#{@name}/"
+					path.sub!(%r{/#{flavor}/?}u, base) \
+            || path = '/' + @session.language + '/' + @name.to_s
+					@attributes.store("href", path)
 				end
 			end
 		end

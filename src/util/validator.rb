@@ -7,8 +7,7 @@ require 'cgi'
 module SHOE
 	class Validator < SBSM::Validator
 		EVENTS = [
-			:hello,
-			:goodbye
+			:article,
 		]
 	end
 end

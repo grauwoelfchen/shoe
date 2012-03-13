@@ -15,19 +15,21 @@ module SHOE
       :css    => 'shoe.css',
       :logo   => 'logo.png',
     }
-    DICTIONARIES = {
+    DICTIONARIES = { # a-Z
       'de' => {
-        :home_title         => "Home",
-        :head_text          => "Das ist gute shue :-D",
-        :foot_text          => "foot",
+        :article_title      => "Artikeln",
         :explain_text       => "Willkommen zu Shoe Projekt",
+        :foot_text          => "",
+        :head_text          => "Das ist gute shue :-D",
+        :home_title         => "Home",
 				:navigation_divider	=> '&nbsp;|&nbsp;',
       },
       'en' => {
-        :home_title         => "Home",
-        :head_text          => "It's nice shoe :-D",
-        :foot_text          => "foot",
+        :article_title      => "Articles",
         :explain_text       => "Welcome to Shoe Project",
+        :foot_text          => "",
+        :head_text          => "It's nice shoe :-D",
+        :home_title         => "Home",
 				:navigation_divider	=> '&nbsp;|&nbsp;',
       }
     }

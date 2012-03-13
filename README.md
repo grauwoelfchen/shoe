@@ -84,6 +84,22 @@ shoe;) exit
 -> Tschüs
 ```
 
+* > articles  #=> all articles
+* > recent_articles #=> recent 3 articles
+* > create_article #=> create new article
+* > delete_article(id) #=> delete article with id(odba_id)
+
+
+-----
+
+## Flavor
+
+sample flavors
+
+* plain (http://shoe.localhost/de/plain/)
+* grid (http://shoe.localhost/de/grid/)
+
+
 -----
 
 ## Note

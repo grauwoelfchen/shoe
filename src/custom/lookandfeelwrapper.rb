@@ -4,32 +4,30 @@
 require 'sbsm/lookandfeelwrapper'
 
 module SHOE
-	class LookandfeelGray < SBSM::LookandfeelWrapper
-		ENABLED = [
-			:logo,
-		]
-		DICTIONARIES = {
-			'de'	=>	{
-				:html_title		=>	'', 
-				:home_welcome	=>  "",
-			},
-			'en'	=>	{
-				:html_title		=>	'', 
-				:home_welcome	=>  "",
-			}
-		}
-    RESOURCES = {
-      :css    => 'shoe.css',
-      :logo   => 'logo.png',
+  class LookandfeelPlain < SBSM::LookandfeelWrapper
+    ENABLED = [
+      :logo,
+    ]
+    DICTIONARIES = {
+      'de' => {
+        :pattern_grid  => 'Grid',
+        :pattern_plain => 'Einfarbig',
+      },
+      'en' => {
+        :pattern_grid  => 'Grid',
+        :pattern_plain => 'Plain',
+      },
     }
-		HTML_ATTRIBUTES = {
-			:logo => {
-				'width'		=> '59',
-				'height'	=> '29',
-			},
-		}
-		def navigation(filter=false)
-      [:home] + [:hello] + [:goodbye]
-		end
-	end
+    RESOURCES    = {}
+    HTML_ATTRIBUTES = {
+      :logo => {
+        'width'   => '59',
+        'height'  => '29',
+      },
+    }
+    def navigation(filter=false)
+      [:grid] + [:plain]
+    end
+  end
+  class LookandfeelGrid < LookandfeelPlain; end
 end

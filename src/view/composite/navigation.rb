@@ -10,8 +10,9 @@ module SHOE
 	module View
 		class NavigationComposite < HtmlGrid::Composite
 			COMPONENTS = {}
+      CSS_CLASS = 'line'
 			NAV_LINK_CLASS = NavigationLink
-			NAV_LINK_CSS = 'subheading'
+			NAV_LINK_CSS   = 'subheading'
 			NAV_METHOD = :navigation
 			SYMBOL_MAP = {
 				:navigation_divider	=>	HtmlGrid::Text,
@@ -23,12 +24,12 @@ module SHOE
 			def build_navigation(links = @lookandfeel.send(self::class::NAV_METHOD))
 				links.each_with_index { |state, idx| 
 					pos = [idx*2,0]
-					if(state.is_a?(String))
+					if (state.is_a?(String))
 						state = state.intern
 					end
 					component_css_map.store(pos, self::class::NAV_LINK_CSS)
-					evt = if(state.is_a?(Symbol))
-						unless(self.respond_to?(state))
+					evt = if (state.is_a?(Symbol))
+						unless (self.respond_to?(state))
 							symbol_map.store(state, self::class::NAV_LINK_CLASS)
 						end
 						state
@@ -41,20 +42,15 @@ module SHOE
 					components.store([idx*2-1,0], 'navigation_divider') if idx > 0
 				}
 			end
-			def home(model, session=@session)
-				link = self.class::NAV_LINK_CLASS.new(:hello, model, session, self)
-				link.value = @lookandfeel.lookup(:home_title)
-				link
+			def grid(model, session=@session)
+        link = self.class::NAV_LINK_CLASS.new(:grid, model, session, self)
+        link.value = @lookandfeel.lookup(:pattern_grid)
+        link
 			end
-			def hello(model, session=@session)
-				link = self.class::NAV_LINK_CLASS.new(:hello, model, session, self)
-				link.value = "test1"
-				link
-			end
-			def goodbye(model, session=@session)
-				link = self.class::NAV_LINK_CLASS.new(:goodbye, model, session, self)
-				link.value = "test2"
-				link
+			def plain(model, session=@session)
+        link = self.class::NAV_LINK_CLASS.new(:plain, model, session, self)
+        link.value = @lookandfeel.lookup(:pattern_plain)
+        link
 			end
 		end
 	end

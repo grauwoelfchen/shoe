@@ -1,21 +1,21 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require 'htmlgrid/urllink'
-require 'state/greet/hello'
-require 'state/greet/goodbye'
 require 'sbsm/state'
+require 'state/slips/index'
+require 'state/slips/show'
 
 module SHOE
   module State
     class Global < SBSM::State
-      DIRECT_EVENT = nil 
       GLOBAL_MAP = {
-        :hello   => State::Greet::Hello,
-        :goodbye => State::Greet::Goodbye
+        :articles => State::Slips::Index,
+        :article  => State::Slips::Show,
       }	
-      HOME_STATE = State::Greet::Hello
-      VIEW       = View::Greet::Hello
+      # default
+      DIRECT_EVENT = nil 
+      HOME_STATE   = State::Slips::Index
+      VIEW         = View::Slips::Index
     end
 	end
 end

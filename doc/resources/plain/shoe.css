@@ -5,6 +5,11 @@ body {
   border           : 0px;
   background-color : gray;
 }
+h3 {
+  font-family : Arial, Helvetica, sans-serif;
+  font-size   : 20px;
+  text-align  : center;
+}
 label {
   font-weight : bold;
 }
@@ -21,9 +26,12 @@ ol li {
   margin : 5px 0px;
 }
 table, th, td {
-  border:  1px solid black;
-  padding: 2px;
+  /*border:  1px solid black;*/
+  padding: 3px;
   margin:  0;
+}
+th {
+  background-color: silver;
 }
 
 /* error */
@@ -35,11 +43,6 @@ body.appdown h1 {
 }
 body.appdown h1, body.appdown p {
   padding : 4px;
-}
-h3 {
-  font-family   : Arial, Helvetica, sans-serif;
-  font-size     : 12px;
-  margin-bottom : 2px;
 }
 p {
   padding : 0px;
@@ -69,4 +72,7 @@ td.welcome {
 }
 td.center {
   text-align : center;
+}
+td.right {
+  text-align : right;
 }
