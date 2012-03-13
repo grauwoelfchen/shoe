@@ -41,6 +41,7 @@ sample db setup (see shoe.sql)
 ```
 $ sudo -u postgres createdb -E UTF8 -T template0 shoe
 $ sudo -u postgres createuser shoe
+* To import the existing data do:
 $ sudo -u postgres psql -f shoe.sql shoe
 ```
 
