@@ -107,7 +107,7 @@ sample flavors
 ## Note
 
 Before you run bin/shoed, please check your druby port. 
-If you use the same port in multi process, unexpected errors (Internal Server Error of Apache) may happen.
+If you use the same port for multiple processes, unexpected errors may happen (i.e. Internal Server Error of Apache).
 
 See following the files
 
