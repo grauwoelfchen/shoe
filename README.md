@@ -1,5 +1,7 @@
 # Shoe
 
+* https://github.com/grauwoelfchen/shoe
+
 This is a sample mock project.
 
 * [S] sbsm
@@ -104,10 +106,10 @@ sample flavors
 
 ## Note
 
-Before you run bin/shoed, please check druby port.  
-If you use same port in multi process, unexpected error (Internal Server Error of Apache) caused.
+Before you run bin/shoed, please check your druby port. 
+If you use the same port in multi process, unexpected errors (Internal Server Error of Apache) may happen.
 
-See following files
+See following the files
 
 * doc/index.rbx
 * src/util/shoeapp.rb
