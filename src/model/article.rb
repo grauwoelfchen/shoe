@@ -11,6 +11,7 @@ module SHOE
       :created_at, :updated_at
     def initialize
       @created_at = @updated_at = Time.now
+      super
     end
 	end
 end
