@@ -91,7 +91,33 @@ shoe;) exit
 * > create_article #=> create new article
 * > delete_article(id) #=> delete article with id(odba_id)
 
+  
+-----
 
+## Access Test
+
+1. Create test data
+
+  ```
+  $ test/data_loader.rb
+  length?
+  300
+  preparing ...
+  start data loading
+  total: 300
+  ```
+
+2. Create request
+  This batch.sh script just run test/access_test.rb.  
+  Please run sometimes at the need.
+
+3. Check status file
+  Please check status file. There 2 ways.
+  
+  * http://shoe.localhost/resources/downloads/status
+  * run test/status.sh (it downloads status output to test/log)
+
+  
 -----
 
 ## Flavor
