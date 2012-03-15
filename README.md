@@ -17,7 +17,7 @@ Let's learn world of oddb.org.
 ### Server - Apache
 
 * Apache2 - http://www.apache.org
-* mod\_ruby - https://github.com/shugo/mod_ruby.git
+* mod\_ruby - https://github.com/shugo/mod\_ruby.git
 
 sample httpd.conf (see shoe.conf)
 
@@ -51,6 +51,8 @@ $ sudo -u postgres psql -f shoe.sql shoe
 
 $ bin/admin
 
+if result is small, return value of inspect
+
 ```
 shoe;) articles
 -> {}
@@ -75,7 +77,7 @@ shoe;) articles
 shoe;) articles.keys
 -> [1]
 shoe;) articles.values
--> {1=>#<ODBA::Stub:82508740#1 @odba_class=SHOE::Article @odba_container=82494650#1>}
+-> [#<ODBA::Stub:82508740#1 @odba_class=SHOE::Article @odba_container=82494650#1>]
 shoe;) articles.values.first
 -> #<SHOE::Article:0x8a54cb0>
 shoe;) articles.values.first.is_a? ODBA::Stub
