@@ -11,7 +11,6 @@ This is a sample mock project.
 
 Let's learn world of oddb.org.
 
------
 
 ## Setup
 
@@ -47,7 +46,6 @@ $ sudo -u postgres createuser shoe
 $ sudo -u postgres psql -f shoe.sql shoe
 ```
 
------
 
 ## Admin Tool
 
@@ -92,8 +90,6 @@ shoe;) exit
 * > delete_article(id) #=> delete article with id(odba_id)
 
   
------
-
 ## Access Test
 
 1. Create test data
@@ -118,8 +114,6 @@ shoe;) exit
   * run test/status.sh (it downloads status output to test/log)
 
   
------
-
 ## Flavor
 
 sample flavors
@@ -127,8 +121,6 @@ sample flavors
 * plain (http://shoe.localhost/de/plain/)
 * grid (http://shoe.localhost/de/grid/)
 
-
------
 
 ## Note
 
