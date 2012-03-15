@@ -17,7 +17,7 @@ Let's learn world of oddb.org.
 ### Server - Apache
 
 * Apache2 - http://www.apache.org
-* mod\_ruby - https://github.com/shugo/mod\_ruby.git
+* mod\_ruby - https://github.com/shugo/mod&#95;ruby.git
 
 sample httpd.conf (see shoe.conf)
 
