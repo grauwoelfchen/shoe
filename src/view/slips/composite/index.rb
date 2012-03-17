@@ -20,7 +20,7 @@ module SHOE
           [0,1] => 'right',
         }
         def title(context)
-          context.h3 {
+          context.h2({:class => 'center'}) {
             @lookandfeel.lookup(:article_title)
           }
         end
