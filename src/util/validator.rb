@@ -7,7 +7,12 @@ require 'cgi'
 module SHOE
 	class Validator < SBSM::Validator
 		EVENTS = [
-			:article,
+      :index,
+			:slips,
+			:slip,
 		]
+    STRINGS = [
+      :slug,
+    ]
 	end
 end

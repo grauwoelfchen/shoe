@@ -25,8 +25,11 @@ module SHOE
         'height'  => '29',
       },
     }
-    def navigation(filter=false)
+    def flavor_navigation(filter=false)
       [:grid] + [:plain]
+    end
+    def slip_navigation(filter=false)
+      [:recent_index] + [:all_index]
     end
   end
   class LookandfeelGrid < LookandfeelPlain; end

@@ -8,7 +8,7 @@ require 'view/composite/foot'
 
 module SHOE
   module View
-    class PublicTemplate < HtmlGrid::Template
+    class Template < HtmlGrid::Template
       HTTP_HEADERS = {
         "Content-Type"  => "text/html; charset=UTF-8",
         "Cache-Control" => "private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",

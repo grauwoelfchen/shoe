@@ -2,8 +2,7 @@
 # encoding: utf-8
 
 require 'htmlgrid/composite'
-require 'htmlgrid/text'
-require 'view/composite/navigation'
+require 'view/composite/flavor_navigation'
 
 module SHOE
   module View
@@ -15,7 +14,7 @@ module SHOE
       }
       COMPONENTS = {
         [0,0] => :foot,
-        [0,1] => View::NavigationComposite,
+        [0,1] => View::FlavorNavigationComposite,
       }
       def foot(model, session=@session)
         parts = []

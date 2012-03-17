@@ -11,8 +11,9 @@ module SHOE
       class Show < State::Global
         VIEW         = View::Slips::Show
         DIRECT_EVENT = :show
-        def show
-          p "show!" 
+        def init
+          super
+          @model = Article.find_by_slug(@session.valid_input[:slug])
         end
       end
     end

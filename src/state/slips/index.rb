@@ -11,9 +11,12 @@ module SHOE
       class Index < State::Global
         VIEW         = View::Slips::Index
         DIRECT_EVENT = :index
-        def articles
-          articles = @session.recent_articles
-          View::Slips::Index.new(articles)
+        def init
+          super
+          @model = {
+            :articles => @session.app.recent_articles,
+            :total    => @session.app.articles.count
+          }
         end
       end
     end

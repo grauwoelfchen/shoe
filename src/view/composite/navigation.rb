@@ -2,18 +2,17 @@
 # encoding: utf-8
 
 require 'htmlgrid/composite'
-require 'htmlgrid/link'
-require 'htmlgrid/popuplink'
+require 'htmlgrid/text'
 require 'view/partial/navigationlink'
 
 module SHOE
 	module View
 		class NavigationComposite < HtmlGrid::Composite
 			COMPONENTS = {}
-      CSS_CLASS = 'line'
+      CSS_CLASS  = 'line'
 			NAV_LINK_CLASS = NavigationLink
 			NAV_LINK_CSS   = 'subheading'
-			NAV_METHOD = :navigation
+			NAV_METHOD     = :navigation
 			SYMBOL_MAP = {
 				:navigation_divider	=>	HtmlGrid::Text,
 			}
@@ -41,16 +40,6 @@ module SHOE
 					components.store(pos, evt)
 					components.store([idx*2-1,0], 'navigation_divider') if idx > 0
 				}
-			end
-			def grid(model, session=@session)
-        link = self.class::NAV_LINK_CLASS.new(:grid, model, session, self)
-        link.value = @lookandfeel.lookup(:pattern_grid)
-        link
-			end
-			def plain(model, session=@session)
-        link = self.class::NAV_LINK_CLASS.new(:plain, model, session, self)
-        link.value = @lookandfeel.lookup(:pattern_plain)
-        link
 			end
 		end
 	end

@@ -2,17 +2,11 @@
 # encoding: utf-8
 
 require 'sbsm/drbserver'
-require 'sbsm/index'
 require 'odba'
-require 'odba/index_definition'
-require 'odba/drbwrapper'
-require 'odba/18_19_loading_compatibility'
-require 'util/shoeconfig'
 require 'util/session'
 require 'util/validator'
+require 'util/shoeconfig'
 require 'models'
-require 'custom/lookandfeelbase'
-require 'fileutils'
 
 module SHOE
   class ShoeSystem
@@ -28,7 +22,9 @@ module SHOE
       @slug[slug]
     end
     def recent_articles
-      @recent_articles ||= @articles.values.sort_by{ |a| a.created_at }.reverse[0..2]
+      @recent_articles ||= @articles.values.sort_by do |a|
+                             [a.created_at, a.title]
+                           end.reverse[0..9].compact
     end
     def create_article
       article = SHOE::Article.new
@@ -115,10 +111,9 @@ module SHOE
             puts e.message
             $stdout.flush
           end
-        sleep 5
+          sleep 5
         }
       }
     end
-
   end
 end
