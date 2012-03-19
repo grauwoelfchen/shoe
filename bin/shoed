@@ -12,7 +12,13 @@ ODBA.cache.setup
 ODBA.cache.clean_prefetched
 
 $shoe = SHOE::App.new
-$0 = "Shoe (ShoeApp)"
+if (opt = ARGV.first and opt == 'crawler')
+  server_uri = SHOE::SERVER_URI_FOR_CRAWLER
+  $0 = "Shoe (ShoeApp:Crawler)"
+else
+  server_uri = SHOE::SERVER_URI
+  $0 = "Shoe (ShoeApp)"
+end
 
-DRb.start_service(SHOE::SERVER_URI, $shoe)
+DRb.start_service(server_uri, $shoe)
 DRb.thread.join
