@@ -44,6 +44,13 @@ module SHOE
     VALIDATOR = Validator
     ENABLE_ADMIN = true
     def initialize opts={}
+      if opts.has_key?(:server_uri) and \
+         opts[:server_uri] == SHOE::SERVER_URI_FOR_CRAWLER
+        @process = :crawler
+      else
+        @process = :user
+      end
+      puts "process: #{$0}"
       @admin_threads = ThreadGroup.new
       start = Time.now
       puts "init system"
@@ -67,6 +74,9 @@ module SHOE
         @sessions.clear
       }
     end
+    def process_for_crawler?
+      @process == :crawler
+    end
     def log_size
       @size_logger = Thread.new {
         time = Time.now
@@ -74,6 +84,7 @@ module SHOE
         threads  = 0
         sessions = 0
         format = "%s %s: sessions: %4i - threads: %4i  - memory: %4iMB %s"
+        status = process_for_crawler? ? 'status_crawler' : 'status'
         loop {
           begin
             lasttime = time
@@ -97,7 +108,7 @@ module SHOE
             gc << 'S' if sessions < lastsessions
             gc << 'T' if threads < lastthreads
             gc << 'M' if bytes < lastbytes
-            path = File.expand_path('../../doc/resources/downloads/status',
+            path = File.expand_path('../../doc/resources/downloads/' + status,
                                     File.dirname(__FILE__))
             lines = File.readlines(path)[0,99] rescue []
             lines.unshift sprintf(format, alarm, 
