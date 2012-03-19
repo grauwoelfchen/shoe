@@ -5,22 +5,24 @@ $: << File.expand_path('/var/www/shoe/src', File.dirname(__FILE__))
 require 'mechanize'
 require 'util/shoeconfig'
 
+
+input = ARGV[0] || File.dirname(__FILE__) + '/log/access_log'
+agent_urls = []
+File.readlines(input).each do |line|
+  agent = line.split(/"/)
+  agent.pop
+  agent = agent.pop
+  if line =~ /GET (.+) HTTP/ and agent
+    agent_urls << ["http://" + SHOE::SERVER_NAME + $1, agent]
+  end
+end
+
 agent = Mechanize.new
-agent.user_agent = "\
-Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_4_11; de-de) \
-AppleWebKit/525.18 (KHTML, like Gecko) \
-Version/3.1.2 Safari/525.22"
-urls = [
-  "/",
-  "/de/plain/",
-  "/en/plain/",
-  "/de/grid/",
-  "/en/grid/",
-]
-urls.shuffle!
-urls.length.times do |i|
-  url = 'http://' + SHOE::SERVER_NAME + urls[i]
+x = rand(agent_urls.length - 20)
+10.times do |i|
+  url = agent_urls[x+i][0]
+  agent.user_agent = agent_urls[x+i][1]
   print "url = #{url}, agent = #{agent.user_agent}\n"
-  agent.get(url)
+  page = agent.get(url)
   sleep 1
 end
