@@ -6,13 +6,11 @@ require 'util/shoeconfig'
 DRb.start_service('druby://localhost:0')
 
 begin
-  request = SBSM::Request.new(nil)
+  request = SBSM::Request.new(SHOE::SERVER_URI)
   if (request.is_crawler?)
     server_uri = SHOE::SERVER_URI_FOR_CRAWLER
-  else
-    server_uri = SHOE::SERVER_URI
   end
-	SBSM::Request.new(server_uri).process
+	request.process
 rescue Exception => e
 	$stderr << "Shoe-Error: " << e.message << "\n"
 	$stderr << e.class << "\n"
